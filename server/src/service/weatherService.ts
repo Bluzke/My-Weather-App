@@ -122,7 +122,29 @@ class WeatherService {
   // TODO: Complete buildForecastArray method
   // private buildForecastArray(currentWeather: Weather, weatherData: any[]) {}
   // TODO: Complete getWeatherForCity method
-  // async getWeatherForCity(city: string) {}
+  async getWeatherForCity(city: string) {
+    this.cityName = city
+    const queryURL = this.buildGeocodeQuery()
+    const location = this.fetchLocationData(queryURL)
+    let weatherForcast:Weather[] = []
+    let currentWeather = new Weather(
+       this.cityName,
+       dayjs.unix(location.dt).format("MM/DD/YYYY"),
+      location.weather[0].icon,
+      location.weather[0].description,
+      location.main.temp,
+      location.wind.speed,
+     location.main.humidity)
+     weatherForcast.push(currentWeather)
+    const weather = this.buildWeatherQuery()
+    const weatherData = this.fetchWeatherData(weather)
+    weatherData.list.map((element => {
+      if(element.txt.pslit(" ")[1] ==="00:00:00")
+       //location  weatherData.list[i]  element.
+      }
+    ))
+  
+  }
 }
 
 export default new WeatherService();
