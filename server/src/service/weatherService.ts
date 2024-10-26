@@ -52,6 +52,18 @@ class WeatherService {
   }
   // TODO: Define the baseURL, API key, and city name properties
   // TODO: Create fetchLocationData method
+  private async fetchLocationData(query: string) {
+    try {
+   
+      const response = await fetch(query);
+      const locationData = await response.json();
+      console.log(locationData)
+      return locationData
+     
+    }catch(err){
+      console.log("err in fetching curent weather",err)
+    }
+  }
   // private async fetchLocationData(query: string) {}
   // TODO: Create destructureLocationData method
   // private destructureLocationData(locationData: Coordinates): Coordinates {}
