@@ -65,7 +65,22 @@ class WeatherService {
     }
   }
   // private async fetchLocationData(query: string) {}
-  // TODO: Create destructureLocationData method
+    // // TODO: Create destructureLocationData method
+  // private destructureLocationData(locationData: Coordinates): Coordinates {
+  //   const locationDataArray: Coordinates[] = locationData.map((coordinates) => {
+  //     const coordinatesObject: Coordinates = {
+  //       id: coordinates.id,
+  //       city: coordinates.city,
+  //       date: coordinates.date,
+  //       temp: coordinates.temp,
+  //       wind: coordinates.wind,
+  //       humidity: coordinates.humidity,
+  //     };
+
+  //     return {coordinatesObject, locationDataArray};
+  //   });
+
+  // }
   // private destructureLocationData(locationData: Coordinates): Coordinates {}
   // TODO: Create buildGeocodeQuery method
   // private buildGeocodeQuery(): string {}
