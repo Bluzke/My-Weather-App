@@ -66,6 +66,9 @@ class WeatherService {
   }
   // private async fetchLocationData(query: string) {}
     // // TODO: Create destructureLocationData method
+
+// TRIED TO COMPLETE THIS PART BUT COULDNT
+
   // private destructureLocationData(locationData: Coordinates): Coordinates {
   //   const locationDataArray: Coordinates[] = locationData.map((coordinates) => {
   //     const coordinatesObject: Coordinates = {
@@ -81,15 +84,39 @@ class WeatherService {
   //   });
 
   // }
+
+
+
+
   // private destructureLocationData(locationData: Coordinates): Coordinates {}
   // TODO: Create buildGeocodeQuery method
-  // private buildGeocodeQuery(): string {}
-  // TODO: Create buildWeatherQuery method
-  // private buildWeatherQuery(coordinates: Coordinates): string {}
-  // TODO: Create fetchAndDestructureLocationData method
-  // private async fetchAndDestructureLocationData() {}
-  // TODO: Create fetchWeatherData method
-  // private async fetchWeatherData(coordinates: Coordinates) {}
+  private buildGeocodeQuery(): string {
+    // https://api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
+    const queryUrl = `${this.baseURL}/data/2.5/weather?q=${this.cityName}&appid=${this.apiKey}` 
+    return queryUrl
+    }
+      // // TODO: Create buildWeatherQuery method
+      private buildWeatherQuery(): string {
+        //`api.openweathermap.org/data/2.5/forecast?q={city name}&appid={API key}`
+        const queryUrl = `${this.baseURL}/data/2.5/forecast?q=${this.cityName}&appid=${this.apiKey}`
+        return queryUrl;
+      }
+      // // TODO: Create fetchAndDestructureLocationData method
+      // private async fetchAndDestructureLocationData() {}
+      // // TODO: Create fetchWeatherData method
+      private async fetchWeatherData(weatherURL: string) {
+        try {
+       
+          const response = await fetch(weatherURL);
+          const forcastData = await response.json();
+          console.log(forcastData)
+          return forcastData
+         
+        }catch(err){
+          console.log("err in fetching forcast weather",err)
+        }
+      
+      }
   // TODO: Build parseCurrentWeather method
   // private parseCurrentWeather(response: any) {}
   // TODO: Complete buildForecastArray method
